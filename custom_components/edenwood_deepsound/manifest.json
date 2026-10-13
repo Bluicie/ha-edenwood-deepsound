@@ -8,13 +8,13 @@
       "connectable": true
     }
   ],
-  "codeowners": [],
+  "codeowners": ["@Bluicie"],
   "config_flow": true,
   "dependencies": ["bluetooth_adapters"],
-  "documentation": "https://github.com/OWNER/ha-edenwood-deepsound",
+  "documentation": "https://github.com/Bluicie/ha-edenwood-deepsound",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/OWNER/ha-edenwood-deepsound/issues",
+  "issue_tracker": "https://github.com/Bluicie/ha-edenwood-deepsound/issues",
   "requirements": [],
   "version": "0.1.0"
 }

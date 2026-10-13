@@ -74,3 +74,7 @@ python -m pytest tests
 
 `tools/` contains the standalone [bleak](https://github.com/hbldh/bleak) scripts used to explore the
 protocol (GATT dump, listen, send, scan).
+
+## License
+
+MIT, see [LICENSE](LICENSE).
