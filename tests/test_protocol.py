@@ -32,6 +32,9 @@ STATUS_BT_CONNECTED = H("5a1b40 00030100 0b0900000501000500050505050505000000000
         (p.set_volume(6), "5a 04 13 01 03 75"),
         (p.set_mute(False), "5a 04 13 02 00 73"),
         (p.set_bass(4), "5a 04 13 04 09 7e"),
+        (p.set_mode(0x00), "5a 04 13 08 00 79"),  # Cinema
+        (p.set_mode(0x01), "5a 04 13 08 01 7a"),  # Music
+        (p.set_mode(0x03), "5a 04 13 08 03 7c"),  # Standard
     ],
 )
 def test_build_matches_captured(built, captured):
@@ -72,7 +75,10 @@ def test_single_byte_reports():
     assert s.volume == 10
     assert s.apply(H("5a0341 07 a5"))  # source -> HDMI
     assert s.source_name == "HDMI"
-    assert s.apply(H("5a0349 03 a9"))  # mode partner byte (status byte 12)
+    assert s.apply(H("5a0349 03 a9"))  # mode (status byte 12) -> Standard
+    assert s.mode_name == "Standard"
+    s.apply(H("5a0349 00 a6"))
+    assert s.mode_name == "Cinema"
     assert not s.apply(H("5a0344 05 a6"))  # unchanged
     assert not s.apply(H("5a0460 0305 c6"))  # channel level echo is ignored
 

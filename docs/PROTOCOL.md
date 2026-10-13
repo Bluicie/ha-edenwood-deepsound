@@ -52,7 +52,7 @@ Known/suspected fields (to be confirmed by diffing after remote changes):
 | idx | value | guess |
 |---|---|---|
 | 4 | 07 → 03 | **Source** (confirmed by cycling with the remote): 03 = BT, 05 = LINE IN, 06 = USB, 07 = HDMI. 04 unused here (optical on a sister model?) |
-| 6 + 12 | pair | **MODE** (confirmed by cycling): MUSIC = 00/01, CINEMA = 03/00, STANDARD = 05/03. Our `13 03 04` gave 04/00 (unknown preset) |
+| 6 + 12 | pair | **MODE**: set with `13 08 <byte12>`: 00 Cinema, 01 Music, 03 Standard (02 = unnamed preset). `13 03 03` is ignored, so don't use setting 03. Original notes (confirmed by cycling): MUSIC = 00/01, CINEMA = 03/00, STANDARD = 05/03. Our `13 03 04` gave 04/00 (unknown preset) |
 | 7 | 00 → 03 | **Volume / 2** (confirmed: VOL00 → 3× VOL+ → VOL06 gave 03) |
 | 8 | 07 → 09 | **BASS + 5** (confirmed: +2 → +4 gave 07 → 09) |
 | 11 + 19 | 05 | **SUR / SAT VOL + 5** (confirmed: always move together; `14 04 <v>` sets both) |

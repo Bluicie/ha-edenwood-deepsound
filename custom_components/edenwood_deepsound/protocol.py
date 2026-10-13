@@ -31,23 +31,23 @@ MSG_REPORT_LAST = 0x5F
 # Setting ids for CMD_SET_SETTING
 SETTING_VOLUME = 0x01
 SETTING_MUTE = 0x02
-SETTING_MODE = 0x03
+SETTING_MODE = 0x08  # 0x03 writes a related byte (status byte 6) but ignores some values
 SETTING_BASS = 0x04
 SETTING_SURROUND = 0x07
 
 # Indexes into the 25-byte status payload (status frame byte = index + 3)
 IDX_SOURCE = 1
 IDX_BT_CONNECTED = 2
-IDX_MODE = 3
 IDX_VOLUME = 4
 IDX_BASS = 5
 IDX_MUTE = 7
 IDX_SURROUND = 8
+IDX_MODE = 9  # status byte 12
 STATUS_LEN = 25
 
 SOURCE_STANDBY = 0x02
 SOURCES: dict[int, str] = {0x03: "Bluetooth", 0x05: "Line in", 0x06: "USB", 0x07: "HDMI"}
-MODES: dict[int, str] = {0x00: "Music", 0x05: "Standard", 0x03: "Cinema"}
+MODES: dict[int, str] = {0x01: "Music", 0x03: "Standard", 0x00: "Cinema"}  # 0x02 is an unnamed preset
 
 VOLUME_MAX = 100  # as shown on the remote, VOL00..VOL100 in steps of 2
 LEVEL_OFFSET = 5  # bass and surround are -5..+5, stored as value + 5
