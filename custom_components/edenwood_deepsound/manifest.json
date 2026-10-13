@@ -1,0 +1,20 @@
+{
+  "domain": "edenwood_deepsound",
+  "name": "Edenwood Deep Sound",
+  "bluetooth": [
+    {
+      "manufacturer_id": 21330,
+      "manufacturer_data_start": [82, 82, 67],
+      "connectable": true
+    }
+  ],
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["bluetooth_adapters"],
+  "documentation": "https://github.com/OWNER/ha-edenwood-deepsound",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/OWNER/ha-edenwood-deepsound/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

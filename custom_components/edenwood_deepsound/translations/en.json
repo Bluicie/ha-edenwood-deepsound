@@ -1,0 +1,35 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Choose the Edenwood Deep Sound dongle to add.",
+        "data": {
+          "address": "Device"
+        }
+      },
+      "bluetooth_confirm": {
+        "description": "Add the {name} dongle ({address})? The remote keeps working: Home Assistant only connects briefly when it needs to."
+      }
+    },
+    "abort": {
+      "already_configured": "This dongle is already configured.",
+      "no_devices_found": "No Edenwood Deep Sound dongle found. It needs a Bluetooth adapter or an ESPHome Bluetooth proxy with active connections within range."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "bluetooth_audio": {
+        "name": "Bluetooth audio connected"
+      }
+    },
+    "number": {
+      "bass": {
+        "name": "Bass"
+      },
+      "surround": {
+        "name": "Surround level"
+      }
+    }
+  }
+}

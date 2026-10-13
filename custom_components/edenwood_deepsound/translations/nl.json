@@ -1,0 +1,35 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Kies de Edenwood Deep Sound-dongle die je wilt toevoegen.",
+        "data": {
+          "address": "Apparaat"
+        }
+      },
+      "bluetooth_confirm": {
+        "description": "De {name}-dongle ({address}) toevoegen? De afstandsbediening blijft werken: Home Assistant maakt alleen kort verbinding als dat nodig is."
+      }
+    },
+    "abort": {
+      "already_configured": "Deze dongle is al ingesteld.",
+      "no_devices_found": "Geen Edenwood Deep Sound-dongle gevonden. Er moet een Bluetooth-adapter of een ESPHome Bluetooth-proxy met actieve verbindingen binnen bereik zijn."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "bluetooth_audio": {
+        "name": "Bluetooth-audio verbonden"
+      }
+    },
+    "number": {
+      "bass": {
+        "name": "Bas"
+      },
+      "surround": {
+        "name": "Surroundniveau"
+      }
+    }
+  }
+}
