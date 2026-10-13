@@ -56,11 +56,12 @@ class DeepSoundDevice:
         """The dongle only has a power toggle, so send it only when the state differs."""
         await self._session((protocol.power_toggle(), protocol.get_status()), want_on=on)
 
+    # In standby the dongle ignores source and volume, but accepts the other settings.
     async def async_set_source(self, source: int) -> None:
-        await self._command(protocol.set_source(source))
+        await self._command(protocol.set_source(source), require_on=True)
 
     async def async_set_volume(self, volume: int) -> None:
-        await self._command(protocol.set_volume(volume))
+        await self._command(protocol.set_volume(volume), require_on=True)
 
     async def async_set_mute(self, mute: bool) -> None:
         await self._command(protocol.set_mute(mute))
@@ -74,9 +75,9 @@ class DeepSoundDevice:
     async def async_set_surround(self, level: int) -> None:
         await self._command(protocol.set_surround(level))
 
-    async def _command(self, frame: bytes) -> None:
+    async def _command(self, frame: bytes, require_on: bool = False) -> None:
         # Not every setting reports its own status byte back (MODE doesn't), so finish with a full status.
-        await self._session((frame, protocol.get_status()), require_on=True)
+        await self._session((frame, protocol.get_status()), require_on=require_on)
 
     async def _session(
         self, frames: tuple[bytes, ...], require_on: bool = False, want_on: bool | None = None
